@@ -49,19 +49,9 @@ It’s community-powered, cost-free, and scalable.
 
 ---
 
-## 📸 Screenshots & Demo
-
+## 📸 Screenshots 
 
 ---<img width="1639" height="946" alt="Screenshot 2025-07-12 171736" src="https://github.com/user-attachments/assets/660d689d-0fe9-4295-995f-18264457a66c" />
-
-
-## 📂 Folder Structure
-New-Project-Odoo-Hackathon-/
-├── client/ ← Frontend files (HTML, CSS, JS)
-├── server/ ← Backend Express + SQLite DB
-├── database.db ← Local DB storing users + swaps
-├── README.md ← This file!
-
 
 ---
 
