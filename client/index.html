@@ -12,6 +12,21 @@
     <p>This is a mini Skill Swap Platform</p>
     <div id="profile-list"></div>
   </div>
+  <!-- Swap Request Modal -->
+<div id="swapModal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
+background:#fff; padding:20px; border:1px solid #ccc; z-index:1000;">
+  <h3>Send Swap Request</h3>
+  <form id="swapForm">
+    <input type="hidden" id="receiverId" />
+    <label>Your User ID:<br><input type="text" id="requesterId" required /></label><br><br>
+    <label>Skill Offered:<br><input type="text" id="skillOffered" required /></label><br><br>
+    <label>Skill Wanted:<br><input type="text" id="skillWanted" required /></label><br><br>
+    <label>Message:<br><textarea id="message"></textarea></label><br><br>
+    <button type="submit">Send Request</button>
+    <button type="button" onclick="closeModal()">Cancel</button>
+  </form>
+</div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
