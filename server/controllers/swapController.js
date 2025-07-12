@@ -40,6 +40,8 @@ function updateSwapStatus(req, res) {
   });
 }
 
+
+
 function deleteSwap(req, res) {
   const { id } = req.params;
   const db = require("../config/db").getDB();
@@ -52,10 +54,21 @@ function deleteSwap(req, res) {
   });
 }
 
+function getAllSwaps(req, res) {
+  const db = require("../config/db").getDB();
+  const sql = "SELECT * FROM swaps ORDER BY id DESC";
+
+  db.all(sql, [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+}
+
 
 module.exports = {
   createSwap,
   getSwapsByUser,
   updateSwapStatus,
-  deleteSwap
+  deleteSwap,
+  getAllSwaps
 };
