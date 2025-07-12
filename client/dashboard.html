@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Swap Dashboard - New-Project-Odoo-Hackathon-</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 p-5 text-white text-center shadow">
+    <h1 class="text-2xl font-bold">Swap Dashboard</h1>
+    <p class="text-sm">View and manage your skill swap requests</p>
+  </header>
+
+  <!-- Dashboard Section -->
+  <main class="max-w-4xl mx-auto py-8 px-4">
+    <div class="mb-6">
+      <label class="block text-sm font-medium mb-1">Enter Your User ID:</label>
+      <div class="flex gap-2">
+        <input type="number" id="userIdInput" class="border p-2 rounded w-40" />
+        <button onclick="loadSwaps()" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
+          Load My Swaps
+        </button>
+      </div>
+    </div>
+
+    <h2 class="text-lg font-semibold mb-4">Your Swap Requests</h2>
+    <div id="swapResults" class="space-y-4"></div>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

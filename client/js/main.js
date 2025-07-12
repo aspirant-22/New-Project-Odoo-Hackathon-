@@ -7,12 +7,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   users.forEach(user => {
     const div = document.createElement("div");
-    div.className = "card";
+    div.className = "bg-white shadow-md rounded-lg p-4 border border-gray-200";
     div.innerHTML = `
-        <h3>${user.name}</h3>
-        <p>Availability: ${user.availability}</p>
-        <button onclick="openSwapModal(${user.id})">Request Swap</button>
+        <h3 class="text-lg font-bold text-indigo-600">${user.name}</h3>
+        <p class="text-gray-700 mb-3">Availability: ${user.availability}</p>
+        <button
+            onclick="openSwapModal(${user.id})"
+            class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition"
+        >
+        Request Swap
+        </button>
     `;
+
     container.appendChild(div);
   });
 });
