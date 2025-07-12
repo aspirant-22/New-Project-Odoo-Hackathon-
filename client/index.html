@@ -16,10 +16,50 @@
   </header>
 
   <!-- Main Content -->
-  <main id="app" class="max-w-4xl mx-auto py-8 px-4">
-    <h2 class="text-xl font-semibold mb-4">Browse Public Profiles</h2>
+  <main id="app" class="max-w-4xl mx-auto py-8 px-4 space-y-8">
+  <!-- 🔍 Search -->
+  <div class="max-w-md mx-auto text-center">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by skill (e.g., Excel)"
+      class="w-full border border-gray-300 rounded px-4 py-2"
+      oninput="filterUsers()"
+    />
+  </div>
+
+ <!-- View Dashboard Button -->
+<div class="text-center my-10">
+  <a href="dashboard.html" target="_blank">
+    <button class="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 transition">
+      View My Dashboard
+    </button>
+  </a>
+</div>
+
+
+<script>
+  function openDashboard(e) {
+    e.preventDefault();
+    const userId = document.getElementById("dashboardUserId").value;
+    if (!userId) return alert("Enter your user ID first.");
+    window.open(`dashboard.html?user=${userId}`, "_blank");
+  }
+</script>
+
+    </div>
+    <div id="dashboard" class="max-w-3xl mx-auto space-y-4"></div>
+  </div>
+
+  <!-- 👥 Public Profiles -->
+  <div>
+    <h2 class="text-xl font-semibold mb-4 text-center">Browse Public Profiles</h2>
     <div id="profile-list" class="space-y-4"></div>
-  </main>
+  </div>
+
+  
+</main>
+
 
   <!-- Swap Request Modal -->
   <div id="swapModal" class="hidden fixed top-20 left-1/2 transform -translate-x-1/2 bg-white p-6 border rounded-lg shadow-lg z-50 w-full max-w-md">

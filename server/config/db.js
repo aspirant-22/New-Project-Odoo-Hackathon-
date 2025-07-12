@@ -8,6 +8,8 @@ function initDB() {
       console.error("DB Error:", err.message);
     } else {
       console.log("Connected to New-Project-Odoo-Hackathon- SQLite database.");
+
+      // Create users table
       db.run(`
         CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,9 +21,28 @@ function initDB() {
           profilePhoto TEXT
         )
       `);
+
+      // ✅ Create swaps table
+      db.run(`
+        CREATE TABLE IF NOT EXISTS swaps (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          requesterId INTEGER,
+          receiverId INTEGER,
+          skillOffered TEXT,
+          skillWanted TEXT,
+          message TEXT,
+          status TEXT DEFAULT 'pending',
+          FOREIGN KEY (requesterId) REFERENCES users(id),
+          FOREIGN KEY (receiverId) REFERENCES users(id)
+        )
+      `, (err) => {
+        if (err) console.error("Swaps table creation failed:", err.message);
+        else console.log("✅ swaps table created!");
+      });
     }
   });
 }
+
 
 function getDB() {
   return db;

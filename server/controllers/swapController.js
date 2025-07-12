@@ -3,15 +3,18 @@ const { getDB } = require("../config/db");
 function createSwap(req, res) {
   const { requesterId, receiverId, skillOffered, skillWanted, message } = req.body;
   const db = getDB();
+
   const sql = `
-    INSERT INTO swaps (requesterId, receiverId, skillOffered, skillWanted, message)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO swaps (requesterId, receiverId, skillOffered, skillWanted, message, status)
+    VALUES (?, ?, ?, ?, ?, ?)
   `;
-  db.run(sql, [requesterId, receiverId, skillOffered, skillWanted, message], function (err) {
+
+  db.run(sql, [requesterId, receiverId, skillOffered, skillWanted, message, "pending"], function (err) {
     if (err) return res.status(500).json({ error: err.message });
     res.json({ success: true, id: this.lastID });
   });
 }
+
 
 function getSwapsByUser(req, res) {
   const { userId } = req.params;
