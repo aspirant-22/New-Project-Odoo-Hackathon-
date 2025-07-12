@@ -51,9 +51,9 @@ It’s community-powered, cost-free, and scalable.
 
 ## 📸 Screenshots & Demo
 
-> *[Include screenshots or Loom/YT demo link if available]*
 
----
+---<img width="1639" height="946" alt="Screenshot 2025-07-12 171736" src="https://github.com/user-attachments/assets/660d689d-0fe9-4295-995f-18264457a66c" />
+
 
 ## 📂 Folder Structure
 New-Project-Odoo-Hackathon-/
