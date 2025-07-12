@@ -8,18 +8,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   users.forEach(user => {
     const div = document.createElement("div");
     div.className = "bg-white shadow-md rounded-lg p-4 border border-gray-200";
-    div.innerHTML = `
-        <h3 class="text-lg font-bold text-indigo-600">${user.name}</h3>
-        <p class="text-sm text-gray-700">Location: ${user.location || "Not specified"}</p>
-        <p class="text-sm text-gray-700">Availability: ${user.availability}</p>
-
-        <button
-            onclick="openSwapModal(${user.id})"
-            class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition"
-        >
-        Request Swap
-        </button>
-    `;
+    div.className = "bg-white shadow-md rounded-lg p-4 border border-gray-200";
+div.innerHTML = `
+  <img src="${user.profilePhoto || 'https://via.placeholder.com/100'}" alt="${user.name}"
+       class="w-24 h-24 rounded-full mx-auto mb-3 border border-gray-300 object-cover" />
+  <h3 class="text-lg font-bold text-indigo-600 text-center">${user.name}</h3>
+  <p class="text-sm text-gray-700 text-center">Location: ${user.location || "Not specified"}</p>
+  <p class="text-sm text-gray-700 text-center">Availability: ${user.availability}</p>
+  <div class="flex justify-center mt-3">
+    <button onclick="openSwapModal(${user.id})"
+      class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition">
+      Request Swap
+    </button>
+  </div>
+`;
 
     container.appendChild(div);
   });

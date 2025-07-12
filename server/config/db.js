@@ -15,7 +15,8 @@ function initDB() {
           email TEXT,
           availability TEXT,
           isPublic INTEGER,
-          location TEXT
+          location TEXT,
+          profilePhoto TEXT
         )
       `);
     }
