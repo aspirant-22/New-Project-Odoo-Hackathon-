@@ -36,3 +36,32 @@ async function loadAllSwaps() {
     container.appendChild(div);
   });
 }
+async function downloadSwapsCSV() {
+  const res = await fetch("http://localhost:3000/swaps/all");
+  const swaps = await res.json();
+
+  if (!swaps.length) {
+    alert("No swap data available to download.");
+    return;
+  }
+
+  const headers = ["ID", "RequesterID", "ReceiverID", "SkillOffered", "SkillWanted", "Message", "Status"];
+  const rows = swaps.map(swap =>
+    [swap.id, swap.requesterId, swap.receiverId, swap.skillOffered, swap.skillWanted, swap.message, swap.status]
+  );
+
+  const csvContent = [headers, ...rows]
+    .map(row => row.map(value => `"${(value ?? "").toString().replace(/"/g, '""')}"`).join(","))
+    .join("\n");
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "swap_data.csv");
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
