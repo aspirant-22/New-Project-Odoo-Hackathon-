@@ -3,7 +3,7 @@ const sqlite3 = require("sqlite3").verbose();
 let db;
 
 function initDB() {
-  db = new sqlite3.Database("./server/database.db", (err) => {
+  db = new sqlite3.Database("../server/database.db", (err) => {
     if (err) {
       console.error("DB Error:", err.message);
     } else {
