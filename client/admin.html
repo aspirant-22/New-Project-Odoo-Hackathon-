@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <title>Admin Dashboard - New-Project-Odoo-Hackathon-</title>
+  <script>
+  // Prompt for admin password on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const password = prompt("Enter Admin Password:");
+    const ADMIN_PASSWORD = "admin123"; // ✅ Change this to your secret
+
+    if (password !== ADMIN_PASSWORD) {
+      alert("Unauthorized access. Redirecting...");
+      window.location.href = "index.html"; // Send them back to main page
+    }
+  });
+</script>
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
