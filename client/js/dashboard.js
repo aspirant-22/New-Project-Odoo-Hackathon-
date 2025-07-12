@@ -59,6 +59,16 @@ async function loadSwaps() {
       div.appendChild(btnGroup);
     }
 
+    // ✅ Show DELETE if current user is the requester and status is pending
+    if (swap.requesterId == userId && swap.status === "pending") {
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 ml-2";
+      deleteBtn.onclick = () => deleteSwapRequest(swap.id);
+      div.appendChild(deleteBtn);
+    }
+
+
     container.appendChild(div);
   });
 }
@@ -78,3 +88,20 @@ async function updateSwapStatus(id, status) {
     alert("Failed to update status.");
   }
 }
+async function deleteSwapRequest(id) {
+  const confirmDelete = confirm("Are you sure you want to delete this pending request?");
+  if (!confirmDelete) return;
+
+  const res = await fetch(`http://localhost:3000/swaps/${id}`, {
+    method: "DELETE"
+  });
+
+  const result = await res.json();
+  if (result.success) {
+    alert("Swap request deleted!");
+    loadSwaps();  // Refresh
+  } else {
+    alert("Failed to delete request.");
+  }
+}
+

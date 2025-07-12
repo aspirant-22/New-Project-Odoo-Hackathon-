@@ -40,8 +40,22 @@ function updateSwapStatus(req, res) {
   });
 }
 
+function deleteSwap(req, res) {
+  const { id } = req.params;
+  const db = require("../config/db").getDB();
+
+  const sql = `DELETE FROM swaps WHERE id = ? AND status = 'pending'`;
+
+  db.run(sql, [id], function (err) {
+    if (err) return res.status(500).json({ success: false, error: err.message });
+    res.json({ success: true });
+  });
+}
+
+
 module.exports = {
   createSwap,
   getSwapsByUser,
-  updateSwapStatus
+  updateSwapStatus,
+  deleteSwap
 };
